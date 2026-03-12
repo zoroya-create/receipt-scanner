@@ -18,9 +18,10 @@ export interface ParsedReceipt {
 
 interface ReceiptTableProps {
     receipts: ParsedReceipt[];
+    blurred?: boolean;
 }
 
-export function ReceiptTable({ receipts }: ReceiptTableProps) {
+export function ReceiptTable({ receipts, blurred = false }: ReceiptTableProps) {
     const handleCopyTsv = () => {
         // 成功したデータのみを抽出してTSV形式の文字列を作成
         const successReceipts = receipts.filter((r) => r.status === "success");
@@ -103,8 +104,8 @@ export function ReceiptTable({ receipts }: ReceiptTableProps) {
                                 {r.status === "success" ? (
                                     <>
                                         <td className="p-4 text-gray-800 whitespace-nowrap">{r.date}</td>
-                                        <td className="p-4 font-medium text-gray-900 blur-sm">{r.storeName}</td>
-                                        <td className="p-4 text-right font-bold tracking-tight text-gray-900 whitespace-nowrap blur-sm">
+                                        <td className={`p-4 font-medium text-gray-900 ${blurred ? "blur-sm" : ""}`}>{r.storeName}</td>
+                                        <td className={`p-4 text-right font-bold tracking-tight text-gray-900 whitespace-nowrap ${blurred ? "blur-sm" : ""}`}>
                                             {r.amount !== null ? `¥${r.amount.toLocaleString()}` : "-"}
                                         </td>
                                         <td className="p-4 text-gray-700 line-clamp-2 md:line-clamp-none">{r.summary}</td>

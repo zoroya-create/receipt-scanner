@@ -165,11 +165,11 @@ export default function Home() {
           </div>
 
           {files.length > 0 && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={handleReset}
                 disabled={isProcessing}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 shadow-sm"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 shadow-sm whitespace-nowrap"
               >
                 <RotateCcw className="w-4 h-4" />
                 リセット
@@ -177,7 +177,7 @@ export default function Home() {
               <button
                 onClick={startAnalysis}
                 disabled={isProcessing || pendingCount === 0}
-                className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-[#1dbfb4] border border-transparent rounded-lg hover:bg-[#179e95] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm transition-colors"
+                className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-[#1dbfb4] border border-transparent rounded-lg hover:bg-[#179e95] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm transition-colors whitespace-nowrap"
               >
                 <Play className="w-4 h-4 fill-current" />
                 {isProcessing ? "解析中..." : "解析スタート"}

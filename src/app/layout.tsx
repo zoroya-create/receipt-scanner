@@ -30,7 +30,7 @@ export default function RootLayout({
         </main>
 
         <footer className="bg-white border-t border-gray-100 py-6 text-center text-sm text-gray-400">
-          <p>© 2026 Receipt Scanner AI. All rights reserved.</p>
+          <p>© 2026 ぞろ屋合同会社. All rights reserved.</p>
         </footer>
 
         <Toaster position="top-center" richColors />

@@ -103,8 +103,8 @@ export function ReceiptTable({ receipts }: ReceiptTableProps) {
                                 {r.status === "success" ? (
                                     <>
                                         <td className="p-4 text-gray-800 whitespace-nowrap">{r.date}</td>
-                                        <td className="p-4 font-medium text-gray-900">{r.storeName}</td>
-                                        <td className="p-4 text-right font-bold tracking-tight text-gray-900 whitespace-nowrap">
+                                        <td className="p-4 font-medium text-gray-900 blur-sm">{r.storeName}</td>
+                                        <td className="p-4 text-right font-bold tracking-tight text-gray-900 whitespace-nowrap blur-sm">
                                             {r.amount !== null ? `¥${r.amount.toLocaleString()}` : "-"}
                                         </td>
                                         <td className="p-4 text-gray-700 line-clamp-2 md:line-clamp-none">{r.summary}</td>

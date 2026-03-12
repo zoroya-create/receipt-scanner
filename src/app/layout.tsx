@@ -3,7 +3,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "レシートスキャン＆データ抽出",
+  title: "ぞろ屋式「爆速レシート解析ツール」",
   description: "複数レシートを一括で読み込み、スプレッドシート用データに変換します",
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({
           <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-xl font-bold tracking-tight text-[#333]">
-                レシートスキャン<span className="text-[#1dbfb4]">AI</span>
+                ぞろ屋式「爆速レシート解析<span className="text-[#1dbfb4]">ツール</span>」
               </span>
             </div>
           </div>

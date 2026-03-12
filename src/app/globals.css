@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #1dbfb4;
+  --color-brand-hover: #179e95;
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-text-main: #333333;
+  --color-text-sub: #666666;
+  --color-border: #e2e8f0;
+}
+
+:root {
+  --background: var(--color-background);
+  --foreground: var(--color-text-main);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilities for neat shadows */
+@utility shadow-soft {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}

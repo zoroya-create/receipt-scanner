@@ -34,18 +34,17 @@ export function ReceiptTable({ receipts, blurred = false }: ReceiptTableProps) {
         // ヘッダー行なしでデータのみにするか、ヘッダーありにするか
         // 一般的な経費精算シートの貼り付けやすさを考慮し、ヘッダーなしのデータ行のみをコピーするか、
         // ここでは分かりやすさのためヘッダーを含めます。
-        const lines = [
-            ["日付", "購入先", "金額", "摘要/科目", "インボイス"].join("\t"),
-            ...successReceipts.map((r) =>
-                [
-                    r.date,
-                    r.storeName,
-                    r.amount ? r.amount.toString() : "",
-                    r.summary,
-                    r.hasInvoiceNumber ? "〇" : "×",
-                ].join("\t")
-            ),
-        ];
+        const lines = successReceipts.map((r) =>
+            [
+                r.date,
+                r.storeName,
+                r.summary,
+                r.amount ? r.amount.toString() : "",
+                "",
+                "",
+                r.hasInvoiceNumber ? "あり" : "なし",
+            ].join("\t")
+        );
 
         const tsv = lines.join("\n");
 
@@ -84,8 +83,10 @@ export function ReceiptTable({ receipts, blurred = false }: ReceiptTableProps) {
                             <th className="p-4 whitespace-nowrap hidden md:table-cell">ファイル</th>
                             <th className="p-4 whitespace-nowrap">日付</th>
                             <th className="p-4">購入先</th>
-                            <th className="p-4 text-right whitespace-nowrap">金額</th>
                             <th className="p-4">摘要・経費科目</th>
+                            <th className="p-4 text-right whitespace-nowrap">金額</th>
+                            <th className="p-4"></th>
+                            <th className="p-4"></th>
                             <th className="p-4 text-center whitespace-nowrap">インボイス</th>
                             <th className="p-4 text-center whitespace-nowrap">ステータス</th>
                         </tr>
@@ -105,27 +106,29 @@ export function ReceiptTable({ receipts, blurred = false }: ReceiptTableProps) {
                                     <>
                                         <td className="p-4 text-gray-800 whitespace-nowrap">{r.date}</td>
                                         <td className={`p-4 font-medium text-gray-900 ${blurred ? "blur-sm" : ""}`}>{r.storeName}</td>
+                                        <td className="p-4 text-gray-700 line-clamp-2 md:line-clamp-none">{r.summary}</td>
                                         <td className={`p-4 text-right font-bold tracking-tight text-gray-900 whitespace-nowrap ${blurred ? "blur-sm" : ""}`}>
                                             {r.amount !== null ? `¥${r.amount.toLocaleString()}` : "-"}
                                         </td>
-                                        <td className="p-4 text-gray-700 line-clamp-2 md:line-clamp-none">{r.summary}</td>
-                                        <td className="p-4 text-center">
+                                        <td className="p-4"></td>
+                                        <td className="p-4"></td>
+                                        <td className="p-4 text-center whitespace-nowrap">
                                             {r.hasInvoiceNumber ? (
-                                                <CheckCircle2 className="w-5 h-5 text-[#1dbfb4] mx-auto" />
+                                                <span className="text-[#1dbfb4] font-medium">あり</span>
                                             ) : (
-                                                <span className="text-gray-300 text-lg font-bold">×</span>
+                                                <span className="text-gray-400 font-medium">なし</span>
                                             )}
                                         </td>
                                     </>
                                 ) : r.status === "error" ? (
-                                    <td colSpan={5} className="p-4 text-red-500 text-sm">
+                                    <td colSpan={7} className="p-4 text-red-500 text-sm">
                                         <div className="flex items-center gap-2">
                                             <AlertCircle className="w-4 h-4" />
                                             {r.error || "解析エラー"}
                                         </div>
                                     </td>
                                 ) : (
-                                    <td colSpan={5} className="p-4 text-gray-400 text-center">
+                                    <td colSpan={7} className="p-4 text-gray-400 text-center">
                                         <span className="opacity-50">解析待ち...</span>
                                     </td>
                                 )}
